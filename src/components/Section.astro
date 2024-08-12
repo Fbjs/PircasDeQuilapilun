@@ -1,0 +1,49 @@
+---
+// Props que recibirá el componente
+interface SectionProps {
+  title: string;
+  items: Array<{ nombre: string; ingredientes?: string; precio: number }>;
+}
+
+const { title, items } = Astro.props as SectionProps;
+
+function formatPrice(price: number): string {
+  return price.toLocaleString('es-ES');
+}
+---
+
+<div class="flex flex-col">
+    <h2 class="text-3xl font-bold mb-4 text-slate-800 w-full border-b-4 border-red-500 py-4">{title}</h2>
+    {items.map(item => (
+        <div class="text-xl flex items-center mb-4">
+            <div class="flex-auto">
+                <h3 class="font-bold">{item.nombre}</h3>
+                {item.ingredientes && <p class="ingredients text-sm"> {item.ingredientes}</p>}
+            </div>
+            <div class="flex-grow mx-2 border-dotted-line border-white"></div>
+            <p class="price">${formatPrice(item.precio)}</p>
+        </div>
+    ))}
+</div>
+
+<style>
+  .border-dotted-line {
+    border-bottom: 3px dotted;
+    height: 2px;
+  }
+  
+  .flex-auto {
+    flex: 1 1 auto; /* This allows the first element to take up as much space as it needs */
+  }
+  
+  .flex-grow {
+    flex-grow: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 1px;
+  }
+
+  .price {
+    white-space: nowrap; /* Ensures the price stays on one line */
+  }
+</style>

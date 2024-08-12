@@ -1,0 +1,118 @@
+---
+// Aquí no necesitas lógica en Astro; solo HTML, CSS y JavaScript.
+---
+
+<nav class="nav border-gray-800 sticky top-0 z-30 bg-white">
+    <div class="container mx-auto flex items-center justify-between px-4 py-2">
+        <img src="/src/assets/logo_color_alta.png" alt="Pircas de Quilapilún" class="w-24 h-24 md:w-48 md:h-48">
+
+        <!-- Botón Hamburger -->
+        <button id="nav-toggle" class="block md:hidden text-gray-800 focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Menú principal -->
+    <div id="nav-menu" class="hidden transform transition-all duration-300 ease-in-out opacity-0 md:opacity-100 md:flex md:container mx-2 md:mx-auto flex-col md:flex-row items-center justify-between px-4 py-4 bg-gray-900 rounded-2xl">
+        <ul class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
+            <li>
+                <a href="/" class="flex items-center font-bold text-xl nav-item">
+                    <span>Nuestra</span>
+                    &nbsp;
+                    <span class="text-red-500">Carta</span>
+                </a>
+            </li>
+            <li class="font-bold text-xl">
+                <a href="#Entradas" class="hover:text-red-500 pr-2 nav-item">Entradas</a>
+            </li>
+            <li class="font-bold text-xl">
+                <a href="#Platos" class="hover:text-red-500 pr-2 nav-item">Platos</a>
+            </li>
+            <li class="font-bold text-xl">
+                <a href="#Agregados" class="hover:text-red-500 pr-2 nav-item">Agregados</a>
+            </li>
+            <li class="font-bold text-xl">
+                <a href="#Postres" class="hover:text-red-500 pr-2 nav-item">Postres</a>
+            </li>
+            <li class="font-bold text-xl">
+                <a href="#Bebestibles" class="hover:text-red-500 pr-2 nav-item">Bebestibles</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Pantalla de carga -->
+<div id="loading-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-700 ease-in-out opacity-0 hidden">
+    <div class="flex flex-col items-center">
+        <img src="/src/assets/logo_color_alta.png" alt="Pircas de Quilapilún" class="w-32 h-32 animate-pulse">
+        <p class="mt-4 text-xl font-bold">Cargando...</p>
+    </div>
+</div>
+
+<script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const navItems = document.querySelectorAll('.nav-item');
+    const loadingScreen = document.getElementById('loading-screen');
+
+    // Toggle menu visibility
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('hidden');
+        if (navMenu.classList.contains('hidden')) {
+            navMenu.classList.remove('opacity-100');
+            navMenu.classList.add('opacity-0', 'translate-y-[-10px]');
+        } else {
+            navMenu.classList.remove('opacity-0', 'translate-y-[-10px]');
+            navMenu.classList.add('opacity-100', 'translate-y-0');
+        }
+    });
+
+    // Close menu when a nav item is clicked and show loading screen
+    navItems.forEach(item => {
+        item.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent the default action to handle the animation
+            const target = event.target.getAttribute('href');
+
+            // Hide the menu
+            navMenu.classList.add('hidden', 'opacity-0', 'translate-y-[-10px]');
+
+            // Show loading screen after the menu is hidden
+            setTimeout(() => {
+                loadingScreen.classList.remove('hidden');
+                loadingScreen.classList.remove('opacity-0');
+                loadingScreen.classList.add('opacity-100');
+
+                // Navigate to the section after showing the loading screen
+                window.location.href = target;
+            }, 100);
+
+            // Hide the loading screen after 1 second or once the new page is loaded
+            const hideLoadingScreen = () => {
+                loadingScreen.classList.remove('opacity-100');
+                loadingScreen.classList.add('opacity-0');
+                setTimeout(() => {
+                    loadingScreen.classList.add('hidden');
+                }, 700); // Duration should match the animation
+            };
+
+            // Ensure loading screen stays for at least 1 second
+            setTimeout(hideLoadingScreen, 300);
+            window.addEventListener('load', hideLoadingScreen);
+        });
+    });
+</script>
+
+<style>
+  .nav {
+    background-color: white;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  @media (min-width: 768px) {
+    .nav {
+      background-color: transparent;
+      border-bottom: none;
+    }
+  }
+</style>
