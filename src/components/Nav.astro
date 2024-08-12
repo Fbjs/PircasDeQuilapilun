@@ -58,7 +58,7 @@
     const navItems = document.querySelectorAll('.nav-item');
     const loadingScreen = document.getElementById('loading-screen');
 
-    // Asegurar que el elemento navToggle existe antes de agregar un event listener
+    // Asegurar que el elemento navToggle y navMenu existen antes de agregar un event listener
     if (navToggle && navMenu) {
         // Toggle menu visibility
         navToggle.addEventListener('click', () => {
@@ -74,12 +74,15 @@
     }
 
     // Asegurar que navItems y loadingScreen existen antes de proceder
-    if (navItems.length > 0 && loadingScreen) {
+    if (navItems.length > 0 && loadingScreen && navMenu) {
         // Close menu when a nav item is clicked and show loading screen
         navItems.forEach(item => {
             item.addEventListener('click', (event) => {
                 event.preventDefault(); // Prevent the default action to handle the animation
-                const target = event.target && event.target.getAttribute('href');
+                
+                // Verificar que event.target es un elemento HTML antes de obtener el atributo
+                const targetElement = event.target as HTMLElement;
+                const target = targetElement.getAttribute('href');
                 
                 if (target) {
                     // Hide the menu
@@ -112,6 +115,7 @@
         });
     }
 </script>
+
 
 
 <style>
