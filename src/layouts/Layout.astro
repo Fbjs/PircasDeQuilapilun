@@ -6,35 +6,60 @@ import Nav from '../components/Nav.astro';
 
 export interface Props {
 	title: string;
+	description: string;
+	image: string;
+	url: string;
 }
 
-const { title } = Astro.props as Props;
+const { title, description, image, url } = Astro.props as Props;
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="view-transition" content="same-origin" />
 		<title>{title}</title>
 		<ViewTransitions />
+
+		<!-- Meta Tags para Vista Previa -->
+		<meta name="description" content={description} />
+
+		<!-- Open Graph Meta Tags -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={url + image} />
+		<meta property="og:url" content={url} />
+		<meta property="og:type" content="website" />
+
+		<!-- Twitter Card Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={url + image} />
+
+		<!-- Añade cualquier otra meta información relevante aquí -->
 	</head>
 	<body class="font-sans bg-gray-900 text-white bg-cover bg-center bg-no-repeat relative" style="background-image: url('/fondo_1.png');">
-
+		
 		<!-- Capa superpuesta con opacidad -->
-		<div class="absolute inset-0 bg-white opacity-35"></div>
+		<div class="absolute inset-0 bg-white opacity-35 pointer-events-none"></div>
 
-		<div class="h-screen overflow-hidden flex flex-col relative z-10">
+		<!-- Contenedor principal -->
+		<div class="h-screen flex flex-col relative z-10">
 			<Nav />
-			<div id="container" class="h-full flex-1 overflow-y-auto">
-				<div id="content">
+
+			<!-- Contenido principal con overflow controlado -->
+			<div id="container" class="flex-1 overflow-y-auto">
+				<div id="content" class="p-4">
 					<slot />
 				</div>
-				<Footer />
 			</div>
+			
+			<Footer />
 		</div>
 	</body>
 </html>
