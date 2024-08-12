@@ -43,8 +43,16 @@ const { title, description, image, url } = Astro.props as Props;
 
 		<!-- Añade cualquier otra meta información relevante aquí -->
 	</head>
-	<body class="font-sans bg-gray-900 text-white bg-cover bg-center bg-no-repeat relative" style="background-image: url('/fondo_1.png');">
+	<body class="font-sans bg-gray-900 text-white bg-cover bg-center bg-no-repeat relative" style="background-image: url('/fondo_1-min.png');">
 		
+		<!-- Pantalla de carga -->
+		<div id="loading-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-white transition-opacity duration-700 ease-in-out opacity-100">
+			<div class="flex flex-col items-center">
+				<img src="/logo_color_alta.png" alt="Pircas de Quilapilún" class="w-32 h-32 animate-pulse">
+				<p class="mt-4 text-xl font-bold">Cargando...</p>
+			</div>
+		</div>
+
 		<!-- Capa superpuesta con opacidad -->
 		<div class="absolute inset-0 bg-white opacity-35 pointer-events-none"></div>
 
@@ -61,5 +69,18 @@ const { title, description, image, url } = Astro.props as Props;
 			
 			<Footer />
 		</div>
+
+		<script>
+			// Ocultar la pantalla de carga cuando la página esté completamente cargada
+			window.addEventListener('load', () => {
+				const loadingScreen = document.getElementById('loading-screen');
+				if (loadingScreen) {
+					loadingScreen.classList.add('opacity-0');
+					setTimeout(() => {
+						loadingScreen.classList.add('hidden');
+					}, 700); // Duración de la transición
+				}
+			});
+		</script>
 	</body>
 </html>
