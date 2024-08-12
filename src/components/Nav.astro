@@ -52,57 +52,67 @@
 </div>
 
 <script>
+    // Obtener elementos del DOM con verificación de nulidad
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     const navItems = document.querySelectorAll('.nav-item');
     const loadingScreen = document.getElementById('loading-screen');
 
-    // Toggle menu visibility
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('hidden');
-        if (navMenu.classList.contains('hidden')) {
-            navMenu.classList.remove('opacity-100');
-            navMenu.classList.add('opacity-0', 'translate-y-[-10px]');
-        } else {
-            navMenu.classList.remove('opacity-0', 'translate-y-[-10px]');
-            navMenu.classList.add('opacity-100', 'translate-y-0');
-        }
-    });
-
-    // Close menu when a nav item is clicked and show loading screen
-    navItems.forEach(item => {
-        item.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent the default action to handle the animation
-            const target = event.target.getAttribute('href');
-
-            // Hide the menu
-            navMenu.classList.add('hidden', 'opacity-0', 'translate-y-[-10px]');
-
-            // Show loading screen after the menu is hidden
-            setTimeout(() => {
-                loadingScreen.classList.remove('hidden');
-                loadingScreen.classList.remove('opacity-0');
-                loadingScreen.classList.add('opacity-100');
-
-                // Navigate to the section after showing the loading screen
-                window.location.href = target;
-            }, 100);
-
-            // Hide the loading screen after 1 second or once the new page is loaded
-            const hideLoadingScreen = () => {
-                loadingScreen.classList.remove('opacity-100');
-                loadingScreen.classList.add('opacity-0');
-                setTimeout(() => {
-                    loadingScreen.classList.add('hidden');
-                }, 700); // Duration should match the animation
-            };
-
-            // Ensure loading screen stays for at least 1 second
-            setTimeout(hideLoadingScreen, 300);
-            window.addEventListener('load', hideLoadingScreen);
+    // Asegurar que el elemento navToggle existe antes de agregar un event listener
+    if (navToggle && navMenu) {
+        // Toggle menu visibility
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+            if (navMenu.classList.contains('hidden')) {
+                navMenu.classList.remove('opacity-100');
+                navMenu.classList.add('opacity-0', 'translate-y-[-10px]');
+            } else {
+                navMenu.classList.remove('opacity-0', 'translate-y-[-10px]');
+                navMenu.classList.add('opacity-100', 'translate-y-0');
+            }
         });
-    });
+    }
+
+    // Asegurar que navItems y loadingScreen existen antes de proceder
+    if (navItems.length > 0 && loadingScreen) {
+        // Close menu when a nav item is clicked and show loading screen
+        navItems.forEach(item => {
+            item.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent the default action to handle the animation
+                const target = event.target && event.target.getAttribute('href');
+                
+                if (target) {
+                    // Hide the menu
+                    navMenu.classList.add('hidden', 'opacity-0', 'translate-y-[-10px]');
+
+                    // Show loading screen after the menu is hidden
+                    setTimeout(() => {
+                        loadingScreen.classList.remove('hidden');
+                        loadingScreen.classList.remove('opacity-0');
+                        loadingScreen.classList.add('opacity-100');
+
+                        // Navigate to the section after showing the loading screen
+                        window.location.href = target;
+                    }, 100);
+
+                    // Hide the loading screen after 1 second or once the new page is loaded
+                    const hideLoadingScreen = () => {
+                        loadingScreen.classList.remove('opacity-100');
+                        loadingScreen.classList.add('opacity-0');
+                        setTimeout(() => {
+                            loadingScreen.classList.add('hidden');
+                        }, 700); // Duration should match the animation
+                    };
+
+                    // Ensure loading screen stays for at least 1 second
+                    setTimeout(hideLoadingScreen, 300);
+                    window.addEventListener('load', hideLoadingScreen);
+                }
+            });
+        });
+    }
 </script>
+
 
 <style>
   .nav {
