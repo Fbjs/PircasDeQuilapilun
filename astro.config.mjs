@@ -5,7 +5,7 @@ import nodejs from '@astrojs/node';
 // https://astro.build/config
 export default defineConfig({
 	integrations: [tailwind()],
-	output: 'server',
+	output: 'static',
 	adapter: nodejs({ mode: 'standalone' }),
 	vite: {
 		define: {
