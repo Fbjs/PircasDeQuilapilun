@@ -8,7 +8,7 @@ interface SectionProps {
 const { title, items } = Astro.props as SectionProps;
 
 function formatPrice(price: number): string {
-  return price.toLocaleString('es-ES');
+  return price.toLocaleString('es-ES', { minimumFractionDigits: 0 });
 }
 ---
 
