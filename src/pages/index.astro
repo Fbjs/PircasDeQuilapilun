@@ -2,6 +2,7 @@
 // Importa el diseño y el componente Section
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
+import BannerVideo from '../components/BannerVideo.astro';
 
 const entradas = [
 	{ nombre: 'Consomé', ingredientes: '', precio: '3.990' },
@@ -100,6 +101,7 @@ const pageUrl = "https://pircas-de-quilapilun.vercel.app";
 ---
 
 <Layout title={pageTitle} description={pageDescription} image={pageImage} url={pageUrl}>
+	<BannerVideo />
 	<div class="container mx-auto px-4 py-8">
 		<div id="Entradas">
 			<Section title="Entradas" items={entradas} />
