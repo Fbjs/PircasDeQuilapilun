@@ -1,0 +1,55 @@
+---
+const imageUrl = '/Banner.jpeg';  // Reemplaza con la ruta de tu imagen
+let showBanner = true;
+---
+
+{showBanner && (
+  <div id="banner-image" class="fixed inset-0 z-50 grid items-center justify-center bg-black bg-opacity-90 transition-opacity duration-500 ease-in-out">
+    <div class="relative w-full max-w-4xl mx-auto text-center">
+      <h1 class="text-white text-3xl mb-4">Bienvenidos</h1>
+      <img src={imageUrl} alt="Banner Image" class="w-full h-auto object-cover" />
+      <button id="close-banner" class="mt-4 bg-white text-black px-6 py-3 rounded">
+        Continuar a la carta
+      </button>
+    </div>
+  </div>
+)}
+
+<style>
+  #banner-image {
+    opacity: 1;
+    transition: opacity 1.5s ease-in-out;
+  }
+
+  #banner-image.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #banner-image img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  button {
+    transition: background-color 1s ease-in-out;
+  }
+
+  button:hover {
+    background-color: #f3f3f3;
+  }
+</style>
+
+<script>
+  const closeButton = document.getElementById('close-banner');
+  const bannerImage = document.getElementById('banner-image');
+
+  if (closeButton && bannerImage) {
+    closeButton.addEventListener('click', () => {
+      bannerImage.classList.add('hidden');
+      setTimeout(() => {
+        bannerImage.style.display = 'none';
+      }, 2000);
+    });
+  }
+</script>
