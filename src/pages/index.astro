@@ -8,16 +8,17 @@ import BannerImagen from '../components/BannerImagen.astro';
 
 const entradas = [
 	{ nombre: 'Consomé', ingredientes: '', precio: '3.990' },
-	{ nombre: 'Champiñones salteados', ingredientes: '', precio: '3.990' },
-	{ nombre: 'Empanadas de queso (6un)', ingredientes: '', precio: '3.990' },
+	{ nombre: 'Champiñones salteados', ingredientes: '', precio: '5.990' },
+	{ nombre: 'Trilogía de empanadas ', ingredientes: '', precio: '5.990' },
 	{ nombre: 'Ceviche mixto de verduras', ingredientes: 'champiñon / palmito / palta', precio: '4.990' },
+	{ nombre: 'Empanada de Pino', ingredientes: '', precio: '2.500' },
 ];
 
 const platosPreparados = [
-	{ nombre: 'Parrillada Especial 4 personas.', ingredientes: '4 Cortes de lomo vetado, 4 Chuletas parrilleras, 2 Trutos de pollo,  3 Longanizas artesanales,  3 Butifarras 4 papas cocidas. ', precio: '49.990' },
-	{ nombre: 'Parrillada Interiores 4 personas.', ingredientes: '4 ubres, 4 chunchules, 3 longanizas artesanales, 4 prietas, 2  cortes de lomo vetado, 4 chuletas parrilleras, 4 papas cocidas. ', precio: '44.990' },
-	{ nombre: 'Parrillada Especial 2 personas.', ingredientes: '2 Cortes de lomo vetado, 2 Chuletas parrilleras, 1 Truto  de pollo,  2 Longanizas artesanales,  2 Butifarras, 2 papas cocidas.', precio: '32.990' },
-	{ nombre: 'Parrillada Interiores 2 personas.', ingredientes: '2 Ubres, 2 Chuchules, 2 Longanizas artesanales, 2 Prietas, 1 corte de Lomo vetado, 2 Chuletas parrilleras, 2 Papas cocidas.', precio: '29.990' },
+	{ nombre: 'Parrillada Especial 4 personas.', ingredientes: '4 Cortes de lomo de vacuno, 4 Chuletas parrilleras, 2 porciones de pollo,  2 Longanizas artesanales,  2 Butifarras 4 papas cocidas. ', precio: '49.990' },
+	{ nombre: 'Parrillada Interiores 4 personas.', ingredientes: '2  porciones de ubres, 3 porciones de chunchules, 2 longanizas artesanales, 3 prietas artesanales, 2  cortes de vacuno, 4 chuletas parrilleras, 4 papas cocidas. ', precio: '44.990' },
+	{ nombre: 'Parrillada Especial 2 personas.', ingredientes: '2 Cortes de lomo de vacuno, 2 Chuletas parrilleras, 1 porción  de pollo,  1 Longaniza artesanal,  1 Butifarra, 2 papas cocidas.', precio: '32.990' },
+	{ nombre: 'Parrillada Interiores 2 personas.', ingredientes: '1 porción de ubre, 2 porciones de Chuchules, 1 Longaniza artesanal, 2 Prietas artesanales, 1 corte de vacuno, 2 Chuletas parrilleras, 2 Papas cocidas.', precio: '29.990' },
 	{ nombre: 'Entraña 300grs. ', ingredientes: 'Salteado de verduras y  cebolla caramelizada ', precio: '24.990' },
 	{ nombre: 'Entraña 300grs', ingredientes: 'A lo pobre', precio: '27.990' },
 	{ nombre: 'Filete 300grs. ', ingredientes: 'Papas Mayo, Arroz, Papas fritas, papas cocidas o ensalada surtida.', precio: '16.990' },
@@ -30,7 +31,7 @@ const platosPreparados = [
 	{ nombre: 'Malaya a la Pizza', ingredientes: 'Salsa de tomate, queso mozarella, champiñones, aceitunas y orégano', precio: '17.990' },
 	{ nombre: 'Chuletas a la parrilla', ingredientes: 'Papas Mayo, Arroz, Papas fritas, puré, papas cocidas o ensalada surtida.', precio: '10.990' },
 	{ nombre: 'Chuletas', ingredientes: 'A lo pobre', precio: '12.990' },
-	{ nombre: 'Arrollado a la chilena 400grs.', ingredientes: 'Papas Mayo, Arroz, Papas fritas, papas cocidas o ensalada surtida.', precio: '9.990' },
+	{ nombre: 'Arollado a la chilena 400grs.', ingredientes: 'Papas Mayo, Arroz, Papas fritas, papas cocidas o ensalada surtida.', precio: '9.990' },
 	{ nombre: 'Prietas', ingredientes: 'Papas Mayo, Arroz, Papas fritas, papas cocidas o ensalada surtida.', precio: '7.990' },
 	{ nombre: 'Cazuela de Vacuno', ingredientes: 'Ensalada de la casa.', precio: '7.990' },
 	{ nombre: 'Pechuga a la plancha', ingredientes: 'Papas Mayo, Arroz, Papas fritas, papas cocidas o ensalada surtida.', precio: '7.990' },
@@ -39,9 +40,10 @@ const platosPreparados = [
 	{ nombre: 'Fideos ', ingredientes: 'Con salsa y vienesas', precio: '5.990' },
 	{ nombre: 'Nugget ', ingredientes: 'Con papas fritas.', precio: '5.990' },
 	{ nombre: 'Croquetas de garbanzos/soya.', ingredientes: 'Papas Mayo, Arroz, Papas fritas, papas cocidas o ensalada surtida.', precio: '5.990' },
-	{ nombre: 'Churrascos ', ingredientes: 'Italiano, barros luco, napolitano, chacarero / con papas fritas ', precio: '8.990' },
+	{ nombre: 'Churrascos ', ingredientes: 'Italiano, barrcos luco, napolitano, chacarero / con papas fritas ', precio: '8.990' },
 	{ nombre: 'Churrasco doña Pepa', ingredientes: 'Cebolla caramelizada, pepinillo, queso fundido, salsa bbq  / con papas fritas ', precio: '9.990' },
 	{ nombre: 'Churrasco Corralero', ingredientes: 'Cebolla caramelizada, tocino, queso fundido, huevo frito  / con papas fritas ', precio: '9.990' },
+
 
   // Añadir más elementos de la lista aquí
 ];
@@ -52,9 +54,10 @@ const agregados = [
 	{ nombre: 'Porción de papas mayo', ingredientes: '', precio: '3.490' },
 	{ nombre: 'Porción de arroz', ingredientes: '', precio: '3.490' },
 	{ nombre: 'A lo pobre', ingredientes: '', precio: '4.990' },
-	{ nombre: 'Ensalada individual', ingredientes: 'lechuga, tomate, chilena, repollo, apio', precio: '3.790' },
+	{ nombre: 'Ensalada individual', ingredientes: 'lechuga, tomate, chilena, repollo, apio', precio: '37.90' },
 	{ nombre: 'Ensalada familiar', ingredientes: 'surtido de verduras verdes', precio: '5.490' },
 	{ nombre: 'Ensalada Palmitos con palta', ingredientes: '', precio: '5.190' },
+
   // Añadir más elementos de la lista aquí
 ];
 
@@ -64,25 +67,27 @@ const postres = [
 	{ nombre: 'Celestino', ingredientes: '', precio: '4.990' },
 	{ nombre: 'Trozo de torta', ingredientes: '', precio: '4.990' },
 
+
   // Añadir más elementos de la lista aquí
 ];
 
 const bebestibles = [
-	{ nombre: 'MISTRAL 35º 750cc.', ingredientes: '4 Bebidas lata 350cc', precio: '24.990' },
+	{ nombre: 'MISTRAL 35º 750cc.', ingredientes: '4 Bebidas lata 350cc', precio: '26.990' },
 	{ nombre: 'JOHNNIE WALKER BLACK LABEL 750cc', ingredientes: '4 Bebidas lata 350cc', precio: '45.990' },
 	{ nombre: 'JOHNNIE WALKER RED LABEL 750cc', ingredientes: '4 Bebidas lata 350cc', precio: '29.990' },
 	{ nombre: 'UNDURRAGA PINOT MERLOT 750cc.', ingredientes: '', precio: '6.990' },
 	{ nombre: 'UNDURRAGA PINOT CARMENERE 750cc', ingredientes: '', precio: '6.990' },
 	{ nombre: 'DIABLO DARK RED 750cc.', ingredientes: '', precio: '12.990' },
 	{ nombre: 'VINO DIABLO DEEP CARMENERE 750cc', ingredientes: '', precio: '12.990' },
-	{ nombre: 'CASA SILVA COLECCIÓN CABERNET SAUVIGNON 750cc', ingredientes: '', precio: '9.990' },
-	{ nombre: 'CASA SILVA COLECCIÓN CARMENERE 750c', ingredientes: '', precio: '9.990' },
-	{ nombre: 'CASA SILVA COLECCIÓN MERLOT 750cc', ingredientes: '', precio: '9.990' },
-	{ nombre: 'CASA SILVA COLECCIÓN SAUVIGNON BLANC 750cc', ingredientes: '', precio: '9.990' },
-	{ nombre: 'CASA SILVA COLECCIÓN CHARDONNAY 750cc.', ingredientes: '', precio: '9.990' },
-	{ nombre: 'Botellín Corona o Miller 330cc', ingredientes: '', precio: '2.800' },
+	{ nombre: 'CASA SILVA COLECCION CABERNET SAUVIGNON 750cc', ingredientes: '', precio: '9.990' },
+	{ nombre: 'CASA SILVA COLECCION CARMENERE 750c', ingredientes: '', precio: '9.990' },
+	{ nombre: 'CASA SILVA COLECCION MERLOT 750cc', ingredientes: '', precio: '9.990' },
+	{ nombre: 'CASA SILVA COLECCION SAUVIGNON BLANC 750cc', ingredientes: '', precio: '9.990' },
+	{ nombre: 'CASA SILVA COLECCION CHARDONNAY 750cc.', ingredientes: '', precio: '9.990' },
+	{ nombre: 'Botellin Corona o Miller 330cc', ingredientes: '', precio: '2.800' },
 	{ nombre: 'Lata bebida 350cc', ingredientes: '', precio: '2.000' },
-	{ nombre: 'Agua mineral ', ingredientes: '', precio: '1.300' },
+	{ nombre: 'Limonada natural ', ingredientes: '', precio: '2.600' },
+	{ nombre: 'Agua mineral ', ingredientes: '', precio: '1.500' },
 	{ nombre: 'Copa Chirimoya Colada', ingredientes: '', precio: '3.990' },
 	{ nombre: 'Copa Mango Sour', ingredientes: '', precio: '3.990' },
 	{ nombre: 'Copa Piña Colada', ingredientes: '', precio: '3.990' },
@@ -90,7 +95,8 @@ const bebestibles = [
 	{ nombre: 'Corto de Pisco Mistral + Bebida lata 350cc', ingredientes: '', precio: '4.990' },
 	{ nombre: 'Corto de Whisky JW Red + Bebida lata 350cc', ingredientes: '', precio: '5.990' },
 	{ nombre: 'Corto de Whisky JW Black + Bebida lata 350cc', ingredientes: '', precio: '7.990' },
-	{ nombre: 'Michelada o Chelada ', ingredientes: '', precio: '1.490' },
+	{ nombre: 'Michelada ó Chelada ', ingredientes: '', precio: '1.490' },
+
 
   // Añadir más elementos de la lista aquí
 ];
@@ -103,7 +109,7 @@ const pageUrl = "https://pircas-de-quilapilun.vercel.app";
 ---
 
 <Layout title={pageTitle} description={pageDescription} image={pageImage} url={pageUrl}>
-	<BannerImagen />
+	<!--- <BannerImagen /> -->
 	<div class="container mx-auto px-4 py-8">
 		<div id="Picoteos">
 			<Section title="Picoteos" items={entradas} />
